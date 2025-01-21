@@ -12,21 +12,13 @@ class Solution:
                 arr.append(w)
 
         for i in arr:
-            if len(i) == (2*k):
+            if len(i) == (2*k) or (len(i) < (2*k) and len(i) >= k):
                 slice = i[:k]
-                print(slice)
                 slice1 = slice[::-1]
-                print(slice1)
                 i = i.replace(slice,slice1)
-                print(i)
                 ans += i
             elif len(i) < k:
                 i = i[::-1]
-                ans += i
-            elif len(i) < (2*k) and len(i) >= k:
-                slice = i[:k]
-                slice1 = slice[::-1]
-                i = i.replace(slice,slice1)
                 ans += i
                 
         return ans
