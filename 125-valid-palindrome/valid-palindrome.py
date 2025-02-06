@@ -4,7 +4,13 @@ class Solution:
         for x in s:
             if x.isalnum():
                 str += x.lower()
-        if str == str[::-1]:
-            return True
-        else:
-            return False
+
+        l = 0
+        r = len(str) - 1
+        for i in range(len(str)):
+            if str[l] == str[r]:
+                l += 1
+                r -= 1
+            else:
+                return False
+        return True
