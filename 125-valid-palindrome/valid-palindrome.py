@@ -7,7 +7,7 @@ class Solution:
 
         l = 0
         r = len(str) - 1
-        for i in range(len(str)):
+        while l <= r:
             if str[l] == str[r]:
                 l += 1
                 r -= 1
