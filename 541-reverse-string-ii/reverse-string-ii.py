@@ -12,14 +12,23 @@ class Solution:
                 arr.append(w)
 
         for i in arr:
+            char = list(i)
+            l = 0
+            r = k - 1
             if len(i) == (2*k) or (len(i) < (2*k) and len(i) >= k):
-                slice = i[:k]
-                slice1 = slice[::-1]
-                i = i.replace(slice,slice1)
-                ans += i
+                while l < r:
+                    char[l], char[r] = char[r], char[l]
+                    l += 1
+                    r -= 1
+                ans += "".join(char)
             elif len(i) < k:
-                i = i[::-1]
-                ans += i
+                l = 0
+                r = len(i) - 1
+                while l < r:
+                    char[l], char[r] = char[r], char[l]
+                    l += 1
+                    r -= 1
+                ans += "".join(char)
                 
         return ans
 
