@@ -17,8 +17,6 @@ class Solution:
             else:
                 return False
             
-            
-
         if p1 == p2:
             return True
         else:  
