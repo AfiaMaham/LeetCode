@@ -8,7 +8,6 @@ class Solution:
                 if count > sum:
                     sum = count
                 ind = str1.index(s[i])
-                print(ind)
                 str1 = str1[ind+1:]
                 count = len(str1)
             str1 += s[i]
