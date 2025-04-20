@@ -1,22 +1,18 @@
 class Solution:
     def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
         dict = {}
-        for i in range(len(groupSizes)):
-            if groupSizes[i] not in dict:
-                dict[groupSizes[i]] = [i]
-            else:
-                dict[groupSizes[i]].append(i)
-        
         ans = []
+        for ind, val in enumerate(groupSizes):
+            if val not in dict:
+                dict[val] = [ind]
+            else:
+                if len(dict[val]) == val:
+                    ans.append(dict[val])
+                    dict[val] = []
+     
+                dict[val].append(ind)
         
         for key, val in dict.items():
-            l = 0
-            k = key
-            if key != len(val):
-                for i in range(len(val)//key):
-                    ans.append(val[l:k])
-                    l = k
-                    k += key
-            else:
-                ans.append(val)
+            ans.append(val)
         return ans
+        
