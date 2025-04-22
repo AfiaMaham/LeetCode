@@ -1,16 +1,13 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        l = 0  # Left for buy
-        r = 1 # Right for sell
-        max_Profit = 0
-        while r < len(prices):
-            if prices[l] < prices[r]:
-                profit = prices[r] - prices[l]
-                max_Profit = max(profit , max_Profit)
-            else:
-                l = r
+        #  Kadane’s Algorithm
+        if len(prices) < 2:
+            return 0
+        max_pro = 0
+        curr = prices[0]
 
-            r += 1
-
-
-        return max_Profit
+        for i in range(1, len(prices)):
+            pro = prices[i] - curr
+            max_pro = max(max_pro, pro)
+            curr = min(curr, prices[i])
+        return max_pro
