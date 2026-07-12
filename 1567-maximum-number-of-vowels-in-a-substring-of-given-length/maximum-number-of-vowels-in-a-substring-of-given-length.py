@@ -1,20 +1,24 @@
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
-        sub = s[:k]
-        vow = "aeiou"
-        sum = 0
-        t = 0
-        print(sub)
+        startingIndex = 0
+        sub = s[startingIndex : k]
+        count = 0
         for i in sub:
-            if i in vow:
-                sum += 1
-        t = sum
-        for i in range(len(s)-k):
-            if sub[0] in vow:
-                t -= 1
-            if s[k] in vow:
-                t += 1
-            sum = max(sum,t)
-            s = s[1:]
-            sub = s[:k]
-        return sum
+            if i in 'aeiou':
+                count += 1
+        max = count
+ 
+        for i in range(k, len(s)):
+            if s[i] in 'aeiou':
+                count += 1
+            if sub[0] in 'aeiou':
+                count -= 1
+            startingIndex += 1
+            sub = s[startingIndex: i+1] 
+        
+            if count > max:
+                max = count
+
+        return max
+
+        
