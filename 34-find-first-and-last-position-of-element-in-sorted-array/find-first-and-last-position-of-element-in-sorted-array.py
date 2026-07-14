@@ -2,8 +2,6 @@ class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if nums == []:
             return [-1, -1]
-       
-        
         def binarySearch(left, right):
             if left > right:
                 return [-1, -1]
@@ -25,20 +23,6 @@ class Solution:
                     m -= 1
                 return [start, end]
                     
-
-
-                
-                # if mid != right:
-                #     m = mid+1
-                #     while nums[m] == target:
-                #         m += 1
-                #     return [mid, mid+1]
-                #     elif nums[mid-1] == target:
-                #         return [mid-1, mid]
-                #     else:
-                #         return [mid, mid]
-                # else:
-                #         return [mid, mid]
             elif nums[mid] > target:
                 return binarySearch(left, mid-1)
             else:
